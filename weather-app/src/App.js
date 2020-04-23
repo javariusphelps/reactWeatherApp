@@ -1,11 +1,12 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Weather from "./component/weather.component";
 
 function App() {
   return (
     <div className="App">
-      <h1>Find Your Weather App</h1>
+      <Weather />
     </div>
   );
 }
