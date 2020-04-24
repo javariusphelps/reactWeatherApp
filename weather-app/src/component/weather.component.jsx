@@ -54,7 +54,7 @@ const Weather = () => {
         <button onClick={getWeather} className="btn btn-primary">
           Enter zipcode
         </button>
-        <h1 className="mb-4">Find Your Weather</h1>
+        <h1 className="mb-4">Grandview Weather App</h1>
         {city ? (
           <div className="row">
             <div className="col">
@@ -69,14 +69,16 @@ const Weather = () => {
               <p>Temperature: {temp} &deg;F</p>
               <p>Humidity: {humidity} %</p>
             </div>
-            <p>
-              {" "}
-              <Moment format="dddd" tz={timezone}></Moment>
-            </p>
-            <p>
-              {" "}
-              <Moment format="h:mm a z" tz={timezone}></Moment>{" "}
-            </p>
+            <div className="col">
+              <p>
+                {" "}
+                <Moment format="dddd" tz={timezone}></Moment>
+              </p>
+              <p>
+                {" "}
+                <Moment format="h:mm a z" tz={timezone}></Moment>{" "}
+              </p>
+            </div>
           </div>
         ) : null}
         <p>{error}</p>
