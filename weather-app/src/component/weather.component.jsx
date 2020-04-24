@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Moment from "react-moment";
 import "moment-timezone";
 
@@ -11,9 +11,6 @@ const Weather = () => {
   const [icon, setIcon] = useState("");
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
-  const icons = {
-    thunder: "url to thunder image",
-  };
 
   const getWeather = () => {
     if (input === "") {
@@ -52,20 +49,36 @@ const Weather = () => {
 
   return (
     <div className="container">
-      <div className="cards">
+      <div className="cards pt-5 mb-3">
         <input type="text" onChange={(e) => setInput(e.target.value)} />
         <button onClick={getWeather} className="btn btn-primary">
-          Submit
+          Enter zipcode
         </button>
-        <h1>Find Your Weather</h1>
-        <p>{city}</p>
-        <p>not set yet</p>
-        <p>{temp} &deg; F</p>
-        <p>{humidity} &#37</p>
-        <p>{description}</p>
-        <Moment format="dddd" tz={timezone}></Moment>
-        <Moment format="h:mm a z" tz={timezone}></Moment>
-
+        <h1 className="mb-4">Find Your Weather</h1>
+        {city ? (
+          <div className="row">
+            <div className="col">
+              <p>{city}</p>
+              <img
+                src={"https://openweathermap.org/img/wn/" + icon + "@2x.png"}
+                alt={description}
+              />
+            </div>
+            <div className="col">
+              <p>Condition: {description}</p>
+              <p>Temperature: {temp} &deg;F</p>
+              <p>Humidity: {humidity} %</p>
+            </div>
+            <p>
+              {" "}
+              <Moment format="dddd" tz={timezone}></Moment>
+            </p>
+            <p>
+              {" "}
+              <Moment format="h:mm a z" tz={timezone}></Moment>{" "}
+            </p>
+          </div>
+        ) : null}
         <p>{error}</p>
       </div>
     </div>
